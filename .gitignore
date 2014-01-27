@@ -12,7 +12,11 @@ lib-cov
 pids
 logs
 results
-public
+public/app.min.css
+public/mergedAssets.js
+public/mergedAssets.min.js
+public/testBundle.js
+app/templates/compiledTemplates.js
 
 npm-debug.log
 node_modules

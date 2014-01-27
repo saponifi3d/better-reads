@@ -9,13 +9,13 @@
   </head>
 
   <body class="">
-    <!-- Add a header -->
+    {{ view "header" }}
 
     <section id="content" class="container">
       {{{body}}}
     </section>
 
-    <script src="/mergedAssets.js"></script>
+    <script src="/mergedAssets.min.js"></script>
     <script>
     (function() {
       var App = window.App = new (require('app/app'))({{json appData}});
