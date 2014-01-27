@@ -10,15 +10,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    stylus: {
+    less: {
       compile: {
         options: {
-          paths: [stylesheetsDir],
-          'include css': true
+          cleancss: true,
+          paths: [stylesheetsDir]
         },
-        files: {
-          'public/styles.css': stylesheetsDir + '/index.styl'
-        }
+        files: { 'public/app.min.css': [stylesheetsDir + '/vendor/bootstrap.min.css', stylesheetsDir + '/boot.less'] }
       }
     },
 
@@ -35,8 +33,6 @@ module.exports = function(grunt) {
         dest: "app/templates/compiledTemplates.js",
         filter: function(filepath) {
           var filename = path.basename(filepath);
-          // Exclude files that begin with '__' from being sent to the client,
-          // i.e. __layout.hbs.
           return filename.slice(0, 2) !== '__';
         }
       }
@@ -45,79 +41,73 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: 'app/**/*.js',
-        tasks: ['browserify'],
-        options: {
-          interrupt: true
-        }
+        tasks: ['browserify:app'],
+        options: { interrupt: true }
       },
       templates: {
         files: 'app/**/*.hbs',
         tasks: ['handlebars'],
-        options: {
-          interrupt: true
-        }
+        options: { interrupt: true }
       },
       stylesheets: {
-        files: [stylesheetsDir + '/**/*.styl', stylesheetsDir + '/**/*.css'],
-        tasks: ['stylus'],
-        options: {
-          interrupt: true
-        }
+        files: [stylesheetsDir + '/**/*.less', stylesheetsDir + '/**/*.css'],
+        tasks: ['less'],
+        options: { interrupt: true }
       }
     },
 
     browserify: {
-      basic: {
-        src: [
-          'app/**/*.js',
+      options: {
+        debug: true,
+        alias: [
+          'node_modules/rendr-handlebars/index.js:rendr-handlebars'
         ],
-        dest: 'public/mergedAssets.js',
-        options: {
-          debug: true,
-          alias: [
-            'node_modules/rendr-handlebars/index.js:rendr-handlebars',
-          ],
-          aliasMappings: [
-            {
-              cwd: 'app/',
-              src: ['**/*.js'],
-              dest: 'app/'
-            },
-          ],
-          shim: {
-            jquery: {
-              path: 'assets/vendor/jquery-1.9.1.min.js',
-              exports: '$',
-            },
-          },
+        aliasMappings: [
+          {
+            cwd: 'app/',
+            src: ['**/*.js'],
+            dest: 'app/'
+          }
+        ],
+        shim: {
+          jquery: {
+            path: 'assets/vendor/jquery-1.9.1.min.js',
+            exports: '$'
+          }
         }
+      },
+      app: {
+        src: [ 'app/**/*.js' ],
+        dest: 'public/mergedAssets.js'
+      },
+      tests: {
+        src: [ 'test/app/**/*.js' ],
+        dest: 'public/testBundle.js'
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-handlebars');
-  grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('runNode', function () {
     grunt.util.spawn({
       cmd: 'node',
       args: ['./node_modules/nodemon/nodemon.js', 'index.js'],
-      opts: {
-        stdio: 'inherit'
-      }
+      opts: { stdio: 'inherit' }
     }, function () {
       grunt.fail.fatal(new Error("nodemon quit"));
     });
   });
 
 
-  grunt.registerTask('compile', ['handlebars', 'browserify', 'stylus']);
+  grunt.registerTask('compile', ['handlebars', 'browserify:app', 'less']);
 
   // Run the server and watch for file changes
   grunt.registerTask('server', ['runNode', 'compile', 'watch']);
 
   // Default task(s).
-  grunt.registerTask('default', ['compile']);
+  grunt.registerTask('default', ['server']);
 };

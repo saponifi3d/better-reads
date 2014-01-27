@@ -17,14 +17,8 @@ app.use(express.bodyParser());
  * `dataAdapter` object to the call to `rendr.createServer()`.
  */
 var dataAdapterConfig = {
-  'default': {
-    host: 'api.github.com',
-    protocol: 'https'
-  },
-  'travis-ci': {
-    host: 'api.travis-ci.org',
-    protocol: 'https'
-  }
+  host: 'www.goodreads.com/api',
+  protocol: 'https'
 };
 
 /**
