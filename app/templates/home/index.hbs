@@ -15,8 +15,12 @@
 </div>
 
 <div class="container">
-  {{#unless currentUser}}
+  {{#if currentUser}}
     <div class="h1 page-header">Recommended</div>
+  {{/if}}
+
+  {{#unless currentUser}}
+    <div class="h1 page-header">Popular</div>
   {{/unless}}
 
   <div class="h1 page-header">Find books</div>
