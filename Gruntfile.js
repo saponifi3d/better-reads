@@ -77,7 +77,7 @@ module.exports = function(grunt) {
         }
       },
       app: {
-        src: ['app/**/*.js', 'assets/vendor/bootstrap.min.js'],
+        src: ['app/**/*.js', 'assets/vendor/bootstrap.min.js', 'assets/vendor/typeahead.bundle.min.js'],
         dest: 'public/mergedAssets.js'
       },
       tests: {
