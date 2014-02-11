@@ -1,16 +1,23 @@
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-  </ol>
+<div class="shoutout">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="panel">
+      <div class="panel-body">
+        <div class="slogan">Get to know your next favorite book.</div>
+      </div>
+    </div>
 
-  <div class="carousel-inner">
+    {{#unless currentUser}}
+      {{ view "components/sign_up" }}
+    {{/unless}}
   </div>
-
-  <!-- controls -->
+  <div class="clearfix"></div>
 </div>
 
-<div style="margin-top: 20px"></div>
-<h1>better<strong>reads</strong></h1>
-<p>Better reads was created to make a more responsive, better user experience around <a href="//www.goodreads.com">Good Reads</a>.</p>
+<div class="container">
+  {{#unless currentUser}}
+    <div class="h1 page-header">Recommended</div>
+  {{/unless}}
 
-
-<p>{{copyright "2014"}}</p>
+  <div class="h1 page-header">Find books</div>
+</div>

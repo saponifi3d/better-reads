@@ -84,14 +84,6 @@ module.exports = function(grunt) {
         src: [ 'test/app/**/*.js' ],
         dest: 'public/testBundle.js'
       }
-    },
-
-    uglify: {
-      app: {
-        files: {
-          'public/mergedAssets.min.js': ['public/mergedAssets.js']
-        }
-      }
     }
   });
 
@@ -99,7 +91,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('runNode', function () {
     grunt.util.spawn({
@@ -112,7 +103,7 @@ module.exports = function(grunt) {
   });
 
 
-  grunt.registerTask('compile', ['handlebars', 'browserify:app', 'less', 'uglify']);
+  grunt.registerTask('compile', ['handlebars', 'browserify:app', 'less']);
 
   // Run the server and watch for file changes
   grunt.registerTask('server', ['runNode', 'compile', 'watch']);
