@@ -1,0 +1,10 @@
+{
+    "presets": [
+        "react-app",
+        [ "env", {
+            "targets": {
+                "browsers": ["chrome >= 61"]
+            }
+        }]
+    ]
+}
