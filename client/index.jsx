@@ -1,10 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from '../components/App';
+import { BrowserRouter } from 'react-router-dom';
 
-console.log('hello'); 
+import { App } from '../components/App';
+import { Routes } from '../pages';
+
+function Application() {
+    return (
+        <BrowserRouter>
+            <App>
+                { Routes }
+            </App>
+        </BrowserRouter>
+    );
+}
 
 ReactDOM.render(
-    <App />,
+    <Application />,
     document.getElementById('react-app')
 );

@@ -1,0 +1,10 @@
+.logo {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.logo > span {
+    font-weight: 300;
+    color: #9099a2;
+}

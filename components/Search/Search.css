@@ -1,0 +1,13 @@
+.search {
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.icon {
+    padding: 5px;
+}
+
+.input {
+    border: 0;
+    outline: none;
+    padding-right: 30px;
+}

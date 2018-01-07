@@ -1,0 +1,22 @@
+.hero {
+    height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    background-color: #d8d8d8;
+    background-image: url('./images/reading.png');
+    background-position: center;
+    background-size: cover;
+}
+
+.hero > h1 {
+    font-weight: 700;
+    color: white;
+    text-shadow: 1px 1px 10px #333347;
+}
+
+.spacing {
+    margin-bottom: 60px;
+    padding: 0 30px;
+}
