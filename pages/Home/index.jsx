@@ -7,7 +7,7 @@ export function Home() {
     return (
         <Fragment>
             <section className={cx(styles.hero, styles.spacing)}>
-                <h1>What are you reading?</h1>
+                <h1>What are you reading today?</h1>
             </section>
 
             <section className={styles.spacing}>
@@ -23,7 +23,7 @@ export function Home() {
                 <p>
                     To improve upon Good Reads, we've created a new UI ontop of
                     the Good Reads API. That means that if you use Good Reads,
-                    all of your data will already be on <em>BetterReads!</em>
+                    all of your data will already be on <em>BetterReads</em>.
                 </p>
             </section>
 
@@ -33,6 +33,15 @@ export function Home() {
                     Keep up to date with what your friends are reading.
                     With <em>BetterReads</em> you can see your friends book 
                     reviews, what they're reading, and what they want to read.
+                </p>
+            </section>
+
+            <section className={styles.spacing}>
+                <h2>Why BetterReads?</h2>
+                <p>
+                    <em>BetterReads</em> is faster, sleeker, and a more functional design.
+                    These changes mean that you can share your reading habits with friends
+                    and family, without the clutter and confusion on Good Reads.
                 </p>
             </section>
         </Fragment>
