@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Login.css';
 
-console.log({ styles });
-
 export class Login extends Component {
     state = {
         toggleSignup: true,
