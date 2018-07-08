@@ -1,5 +1,13 @@
 module.exports = {
-    "extends": "airbnb",
+    "extends": [
+        "airbnb",
+        "prettier",
+        "prettier/react"
+    ],
+    "plugins": [
+        "prettier",
+        "jest"
+    ],
     "rules": {
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "import/no-unresolved": [2, { commonjs: true, amd: true }],
