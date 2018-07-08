@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import styles from './Login.css';
+import styles from './LoginPage.css';
+import { Login } from '../../components/Login';
 
-export class Login extends Component {
+export class LoginPage extends Component {
     state = {
         toggleSignup: true,
     }
@@ -11,8 +12,8 @@ export class Login extends Component {
             <section className={styles.center}>
                 <div className={styles.box}>
                     { this.state.toggleSignup ? 
-                            <h1>Log-in</h1> :
-                            <h1>Sign Up</h1>
+                        <Login /> :
+                        <h1>Sign Up</h1>
                     }
                 </div>
             </section>

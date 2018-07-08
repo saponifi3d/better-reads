@@ -1,24 +1,7 @@
 .header {
-    position: fixed;
-
-    width: 100%;
-    height: 60px;
-    padding: 25px;
-
-    border-bottom: 1px solid #d8d8d8;
-    background-color: white;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-grow: 1;
 }
 
-.search {
-    margin-right: 20px;
-}
-
-
-.headerRight {
-    display: flex;
-    align-items: center;
+.logo {
+    flex: 1;
 }

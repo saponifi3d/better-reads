@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
 
 import { Logo } from '../Logo';
 import { Search } from '../Search';
@@ -9,13 +11,14 @@ import styles from './Header.css';
 export class Header extends Component {
     render() {
         return (
-            <header className={styles.header}>
-                <Logo />
+            <AppBar className={styles.header}>
+                <Toolbar>
+                    <Logo className={styles.logo} />
 
-                <div className={styles.headerRight}>
+                    {/* <Search /> */}
                     <Navigation />
-                </div>
-            </header>
+                </Toolbar>
+            </AppBar>
         );
     }
 }
